@@ -1,0 +1,36 @@
+11
+0
+10
+1
+2
+3 10
+4 9
+5
+6 9
+7 8
+9
+5
+2
+ 
+subject pattern
+NOTFOUND iSub rtnIndex isPat subjectLen patternLen
+ 
+ 
+rtnIndex isPat iPat
+ 
+ 
+rtnIndex isPat
+iPat
+iSub
+ 
+ 
+subject pattern
+iSub patternLen subjectLen isPat
+subject iSub pattern
+iSub
+iPat patternLen
+subject pattern iSub iPat
+NOTFOUND
+iPat
+iSub
+rtnIndex

@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/juancarlosroot/NetBeansProjects/SoftwareEngineering/src/graphreduction/BooleanExpressionsManager.java</file>
+            <file>file:/Users/juancarlosroot/NetBeansProjects/SoftwareEngineering/src/scanner/Entorno.java</file>
+            <file>file:/Users/juancarlosroot/NetBeansProjects/SoftwareEngineering/src/graph/Graph.java</file>
+            <file>file:/Users/juancarlosroot/NetBeansProjects/SoftwareEngineering/src/scanner/parser.java</file>
+            <file>file:/Users/juancarlosroot/NetBeansProjects/SoftwareEngineering/src/scanner/MainWindow.java</file>
+        </group>
     </open-files>
 </project-private>
