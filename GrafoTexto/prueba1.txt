@@ -1,9 +1,9 @@
 digraph G {
 node [style=filled];
 "0: 24: sumar() 
-defs : [] uses : []"->"1: 3:  cout **``sumando``** 
+defs : [] uses : []"->"1: 3:  cout **´´sumando´´** 
 defs : [] uses : []"
-"1: 3:  cout **``sumando``** 
+"1: 3:  cout **´´sumando´´** 
 defs : [] uses : []"->"2: 20: IF a=0 
 defs : [] uses : [a]"
 "2: 20: IF a=0 
@@ -35,15 +35,15 @@ defs : [a] uses : [a]"
 defs : [a] uses : [a]"->"2: 29: end function 
 defs : [] uses : []"
 "0: 41: saludar() 
-defs : [] uses : []"->"1: 35:  cout **``holis``** 
+defs : [] uses : []"->"1: 35:  cout **´´holis´´** 
 defs : [] uses : []"
-"1: 35:  cout **``holis``** 
+"1: 35:  cout **´´holis´´** 
 defs : [] uses : []"->"2: 36: restar ( )  
 defs : [] uses : []"
 "2: 36: restar ( )  
-defs : [] uses : []"->"3: 38:  cout **``holis2``** 
+defs : [] uses : []"->"3: 38:  cout **´´holis2´´** 
 defs : [] uses : []"
-"3: 38:  cout **``holis2``** 
+"3: 38:  cout **´´holis2´´** 
 defs : [] uses : []"->"4: 39: end function 
 defs : [] uses : []"
 "0: 89: start 

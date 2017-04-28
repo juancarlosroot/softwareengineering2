@@ -12,12 +12,15 @@ import graphreduction.CGraphManager;
 import graphreduction.CNode;
 import highlight.JEditTextArea;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,7 +28,8 @@ import java.util.LinkedList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -33,19 +37,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import logic.TruthTable;
-import scanner.Entorno;
-import scanner.Yylex;
-import scanner.functionIndex;
-import scanner.parser;
 
 /**
  *
  * @author juancarlosroot
  */
 public class MainWindow extends javax.swing.JFrame {
-    
+
     Graph newGraph = null;
-    
+
     String[] as_columns1 = new String[]{
         "Major Clause", "Set of possible Tests"
     };
@@ -58,7 +58,7 @@ public class MainWindow extends javax.swing.JFrame {
     DefaultTableModel model1;
     DefaultTableModel model2;
     DefaultTableModel model3;
-    
+
     TruthTable truthTable = null;
     /*cadena que se usa para el graphviz*/
     String msj = "";
@@ -109,9 +109,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldInitNodes = new javax.swing.JTextField();
@@ -137,6 +134,13 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jComboBoxBooleanExp = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -144,27 +148,6 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 504, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 388, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("tab3", jPanel3);
 
         jLabel3.setText("Initial Nodes : ");
 
@@ -235,7 +218,7 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButtonUses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonEPC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(498, Short.MAX_VALUE))
+                .addContainerGap(514, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,6 +354,65 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Logic Coverage", jPanel2);
 
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel2.setText("CINVESTAV-Unidad Guadalajara");
+
+        ImageIcon imageIcon =
+        new ImageIcon(
+            new ImageIcon(getClass().getResource("/cinves2.png")).getImage().getScaledInstance(
+                132,
+                132,
+                Image.SCALE_DEFAULT)
+        );
+        jLabel6.setIcon(imageIcon);
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel5.setText("Ingeniería de Software II");
+
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel7.setText("Abril 28, 2017");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(0, 283, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("About", jPanel3);
+
         jMenu1.setText("File");
 
         jMenuItem2.setText("Open Source Code");
@@ -389,51 +431,51 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void TruthTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TruthTableActionPerformed
-        truthTable = 
-                CheckTruthTable(
-                        truthTable, 
+        truthTable
+                = CheckTruthTable(
+                        truthTable,
                         jComboBoxBooleanExp.getSelectedItem().toString()
                 );
-        if(truthTable != null)
-        {
+        if (truthTable != null) {
             PopulateTable2(truthTable.print());
         }
-        
+
     }//GEN-LAST:event_TruthTableActionPerformed
 
     private void GACCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GACCActionPerformed
         // TODO add your handling code here:
-        truthTable = 
-                CheckTruthTable(
-                        truthTable, 
+        truthTable
+                = CheckTruthTable(
+                        truthTable,
                         jComboBoxBooleanExp.getSelectedItem().toString()
                 );
-        if(truthTable != null)
-        {
+        if (truthTable != null) {
             PopulateTable1(truthTable.GACC());
         }
     }//GEN-LAST:event_GACCActionPerformed
 
     private void RICCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RICCActionPerformed
         // TODO add your handling code here:
-        truthTable = 
-                CheckTruthTable(
-                        truthTable, 
+        truthTable
+                = CheckTruthTable(
+                        truthTable,
                         jComboBoxBooleanExp.getSelectedItem().toString()
                 );
-        if(truthTable != null)
-        {
+        if (truthTable != null) {
             PopulateTable1(truthTable.RICC());
         }
     }//GEN-LAST:event_RICCActionPerformed
@@ -454,13 +496,13 @@ public class MainWindow extends javax.swing.JFrame {
                         System.getProperty("user.dir")
                         + "/" + "Salidas" + "/" + fileName + "_main.txt");
         newGraph.runner();
-        
+
         jTextFieldInitNodes.setText(Integer.toString(newGraph.getInit()));
         jTextFieldFinalNodes.setText(Integer.toString(newGraph.getEnd()));
-        
+
 //        newGraph.printData();
         PopulateComboBox(BooleanExpressionsManager.getList());
-        
+
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -486,100 +528,93 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void CACCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CACCActionPerformed
         // TODO add your handling code here:
-        truthTable = 
-                CheckTruthTable(
-                        truthTable, 
+        truthTable
+                = CheckTruthTable(
+                        truthTable,
                         jComboBoxBooleanExp.getSelectedItem().toString()
                 );
-        if(truthTable != null)
-        {
+        if (truthTable != null) {
             PopulateTable1(truthTable.CACC());
         }
     }//GEN-LAST:event_CACCActionPerformed
 
     private void RACCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RACCActionPerformed
         // TODO add your handling code here:
-        truthTable = 
-                CheckTruthTable(
-                        truthTable, 
+        truthTable
+                = CheckTruthTable(
+                        truthTable,
                         jComboBoxBooleanExp.getSelectedItem().toString()
                 );
-        if(truthTable != null)
-        {
+        if (truthTable != null) {
             PopulateTable1(truthTable.RACC());
         }
     }//GEN-LAST:event_RACCActionPerformed
 
     private void GICCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GICCActionPerformed
         // TODO add your handling code here:
-        truthTable = 
-                CheckTruthTable(
-                        truthTable, 
+        truthTable
+                = CheckTruthTable(
+                        truthTable,
                         jComboBoxBooleanExp.getSelectedItem().toString()
                 );
-        if(truthTable != null)
-        {
+        if (truthTable != null) {
             PopulateTable1(truthTable.GICC());
         }
     }//GEN-LAST:event_GICCActionPerformed
-    
+
     private void PopulateComboBox(ArrayList<BooleanExpresion> m_al) {
 //        jComboBoxBooleanExp = new JComboBox<>();
         for (BooleanExpresion bol : m_al) {
             jComboBoxBooleanExp.addItem(bol.getExpresion());
         }
     }
-    
-    private TruthTable CheckTruthTable(TruthTable tmp, String expression){
-        if(tmp == null && expression.length() > 0)
-        {
+
+    private TruthTable CheckTruthTable(TruthTable tmp, String expression) {
+        if (tmp == null && expression.length() > 0) {
             tmp = new TruthTable(expression);
-        }
-        else if(expression.length() > 0)
-        {
+        } else if (expression.length() > 0) {
             tmp = new TruthTable(expression);
-        }
-        else {
+        } else {
             return null;
         }
         return tmp;
     }
-    
+
     public void RecreateTable1() {
         this.model1 = new DefaultTableModel();
-        
+
         model1.addColumn(as_columns1[0]);
         model1.addColumn(as_columns1[1]);
-        
+
         jTable1.setModel(model1);
     }
-    
+
     public void PopulateTable1(ArrayList<String> m_al) {
         RecreateTable1();
-        
-        for (int i = 1; i < m_al.size(); i++) {
+
+        for (int i = 0; i < m_al.size(); i++) {
             model1.addRow(m_al.get(i).split("\t"));
         }
-        
+
         jTable1.setModel(model1);
     }
-    
+
     public void PopulateTable2(ArrayList<String> m_al) {
         RecreateTable2(m_al.get(0));
-        
+
         for (int i = 1; i < m_al.size(); i++) {
             model2.addRow(m_al.get(i).split("\t"));
         }
-        
+
         jTable2.setModel(model2);
     }
-    
+
     public void PopulateTable3(ArrayList m_al, String header) {
-        
+
         RecreateTable3(header);
         Vector vector;
         for (int i = 0; i < m_al.size(); i++) {
-            
+
             vector = new Vector();
             if (m_al.get(i).toString().length() > 2) {
                 vector.add(m_al.get(i));
@@ -587,50 +622,50 @@ public class MainWindow extends javax.swing.JFrame {
                         vector
                 );
             }
-            
+
         }
-        
+
         jTable3.setModel(model3);
     }
-    
+
     public void RecreateTable2(String header) {
         this.model2 = new DefaultTableModel();
-        
+
         String[] m_sHeader = header.split("\t");
-        
+
         for (int i = 0; i < m_sHeader.length; i++) {
             model2.addColumn(m_sHeader[i]);
         }
-        
+
         jTable2.setModel(model2);
     }
-    
+
     public void RecreateTable2() {
         this.model2 = new DefaultTableModel();
-        
+
         model2.addColumn(as_columns2[0]);
         model2.addColumn(as_columns2[1]);
         model2.addColumn(as_columns2[2]);
-        
+
         jTable2.setModel(model2);
     }
-    
+
     public void RecreateTable3(String header) {
         this.model3 = new DefaultTableModel();
-        
+
         model3.addColumn(header);
-        
+
         jTable3.setModel(model3);
     }
-    
+
     public void RecreateTable3() {
         this.model3 = new DefaultTableModel();
-        
+
         model3.addColumn(as_columns3[0]);
-        
+
         jTable3.setModel(model3);
     }
-    
+
     private String abrirArchivo() {
         String aux = "";
         String texto;
@@ -655,7 +690,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
         return texto;
     }
-    
+
     private void analizar() {
         try {
             msj = "";
@@ -703,13 +738,13 @@ public class MainWindow extends javax.swing.JFrame {
             Logger.getLogger(Entorno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void explore(CNode n) {
         String m = "";
         String defs = "";
         String uses = "";
         String m2 = "";
-        
+
         if (n.m_pLeftNode != null && n.m_pRightNode == null && !n.m_GExplored) {
             m = "" + /*n.getMappedId()
                     + " " */ +n.m_pLeftNode.getMappedId() + "\n";
@@ -788,7 +823,7 @@ public class MainWindow extends javax.swing.JFrame {
             pw = new BufferedWriter(fichero);
             pw.write(cont);
             pw.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -801,7 +836,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public String getNodeString(CNode n1, CNode n2, boolean color) {
         String cad = "";
         if (color) {
@@ -817,19 +852,49 @@ public class MainWindow extends javax.swing.JFrame {
                 + n2.getSingleCodeLine().replaceAll("\"", "``")
                 + " \ndefs : " + n2.m_lstDefs.toString() + " uses : " + n2.m_lstUses + "\"\n";
         return cad;
-        
+
     }
-    
+
     public void generateImg(String fileName, String format) {
         try {
-            String cmd = ConfigProject.cmdGraphviz + " -T" + format + " " + System.getProperty("user.dir") + "/GrafoTexto/" + fileName + ".txt "
-                    + "-o " + System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + format;
-            Runtime.getRuntime().exec(cmd);
+            Runtime rt = Runtime.getRuntime();
+            String cmd
+                    = ConfigProject.cmdGraphviz
+                    + " -T " + format
+                    + " "
+                    //                    + System.getProperty("user.dir") 
+                    + "/GrafoTexto/" + fileName + " > ok.png";
+//                    + ".txt ";
+//                    + "-o " + System.getProperty("user.dir") 
+//                    + "/GrafoImg/" 
+//                    + fileName 
+//                    + "." 
+//                    + format;
+            System.out.println(cmd);
+//            Runtime.getRuntime().exec(cmd);
+
+//            Process proc = rt.exec("cd GrafoTexto");
+             rt.exec("./graph.sh prueba1.txt");
+
+//            InputStream stdin = proc.getInputStream();
+//            InputStreamReader isr = new InputStreamReader(stdin);
+//            BufferedReader br = new BufferedReader(isr);
+//
+//            String line = null;
+//            System.out.println("<OUTPUT>");
+//
+//            while ((line = br.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//
+//            System.out.println("</OUTPUT>");
+            
+//            System.out.println(rt.exec("cd GrafoTexto").toString());;
         } catch (IOException ioe) {
             System.out.println(ioe);
         }
     }
-    
+
     protected JComponent makeTextPanel(String text) {
         JPanel panel = new JPanel(false);
         JLabel filler = new JLabel(text);
@@ -887,8 +952,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonUses;
     private javax.swing.JComboBox<String> jComboBoxBooleanExp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

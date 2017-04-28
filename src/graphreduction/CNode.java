@@ -21,6 +21,7 @@ public class CNode
     /**
      * esta variable le sirve a gamma para su algoritmo
      */
+    String clausuleName;
     public boolean gammaExplored = false;
     /*< Enum to identify the instruction type. */
     ArrayList<eLabels> m_eLstInstructionsTypes;
@@ -50,6 +51,20 @@ public class CNode
      */
     public ArrayList<String> getDefs() {
         return m_lstDefs;
+    }
+    
+    public void setClausuleName(String name){
+        clausuleName=name;
+    }
+    
+    public String getClausuleName(){
+        return clausuleName;
+    }
+    
+    public void swapUsesDefs(CNode c){
+        HashSet<String> set = new HashSet<String>();
+	set.addAll(c.m_lstUses);
+	m_lstDefs.addAll(set);
     }
     /**
      * en esta lista les mando los uses del nodo
