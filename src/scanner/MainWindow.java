@@ -120,6 +120,7 @@ public class MainWindow extends javax.swing.JFrame {
         jButtonUses = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jLabelGraph = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TruthTable = new javax.swing.JButton();
@@ -191,6 +192,8 @@ public class MainWindow extends javax.swing.JFrame {
         jTable3.setModel(model3);
         jScrollPane3.setViewportView(jTable3);
 
+        jLabelGraph.setText("´");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -218,7 +221,8 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButtonUses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonEPC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(514, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jLabelGraph, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +244,8 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jButtonUses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addComponent(jLabelGraph, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Graph Coverage", jPanel1);
@@ -734,6 +739,20 @@ public class MainWindow extends javax.swing.JFrame {
             /*Imprimo la lista de expresiones booleanas*/
 //            JOptionPane.showMessageDialog(null, exps);
 
+            Thread.sleep(1000);
+            ImageIcon imageIcon
+                    = new ImageIcon(
+                            new ImageIcon(
+                                    System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + "png"
+                            )
+                            .getImage()
+                            .getScaledInstance(
+                                    523,
+                                    490,
+                                    Image.SCALE_AREA_AVERAGING
+                            )
+                    );
+            jLabelGraph.setIcon(imageIcon);
         } catch (Exception ex) {
             Logger.getLogger(Entorno.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -857,39 +876,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void generateImg(String fileName, String format) {
         try {
-            Runtime rt = Runtime.getRuntime();
-            String cmd
-                    = ConfigProject.cmdGraphviz
-                    + " -T " + format
-                    + " "
-                    //                    + System.getProperty("user.dir") 
-                    + "/GrafoTexto/" + fileName + " > ok.png";
-//                    + ".txt ";
-//                    + "-o " + System.getProperty("user.dir") 
-//                    + "/GrafoImg/" 
-//                    + fileName 
-//                    + "." 
-//                    + format;
-            System.out.println(cmd);
-//            Runtime.getRuntime().exec(cmd);
-
-//            Process proc = rt.exec("cd GrafoTexto");
-             rt.exec("./graph.sh prueba1.txt");
-
-//            InputStream stdin = proc.getInputStream();
-//            InputStreamReader isr = new InputStreamReader(stdin);
-//            BufferedReader br = new BufferedReader(isr);
-//
-//            String line = null;
-//            System.out.println("<OUTPUT>");
-//
-//            while ((line = br.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//
-//            System.out.println("</OUTPUT>");
-            
-//            System.out.println(rt.exec("cd GrafoTexto").toString());;
+            String cmd = ConfigProject.cmdGraphviz + " -T" + format + " " + System.getProperty("user.dir") + "/GrafoTexto/" + fileName + ".txt "
+                    + "-o " + System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + format;
+            Runtime.getRuntime().exec(cmd);
         } catch (IOException ioe) {
             System.out.println(ioe);
         }
@@ -958,6 +947,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelGraph;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
