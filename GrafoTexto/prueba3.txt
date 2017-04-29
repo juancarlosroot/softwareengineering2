@@ -1,0 +1,109 @@
+digraph G {
+node [style=filled];
+"0: 8: multiplicar(a,b) 
+defs : [a, b] uses : []"->"1: 5: return a*b 
+defs : [] uses : [a, b]"
+"1: 5: return a*b 
+defs : [] uses : [a, b]"->"2: 6: end function 
+defs : [] uses : []"
+"0: 17: sumar(a,b) 
+defs : [a, b] uses : []"->"1: 14: return a+b 
+defs : [] uses : [a, b]"
+"1: 14: return a+b 
+defs : [] uses : [a, b]"->"2: 15: end function 
+defs : [] uses : []"
+"0: 26: restar(a,b) 
+defs : [a, b] uses : []"->"1: 23: return a-b 
+defs : [] uses : [a, b]"
+"1: 23: return a-b 
+defs : [] uses : [a, b]"->"2: 24: end function 
+defs : [] uses : []"
+"0: 84: start 
+defs : [] uses : []"->"1: 28: int opcion 
+defs : [] uses : []"
+"1: 28: int opcion 
+defs : [] uses : []"->"2: 80: WHILE opcion!=-1 
+defs : [] uses : [opcion]"
+"2: 80: WHILE opcion!=-1 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"2: 80: WHILE opcion!=-1 
+defs : [] uses : [opcion]"->"3: 36:  cout **´´que quieres hacer´´** 
+defs : [] uses : []"
+"2: 80: WHILE opcion!=-1 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"2: 80: WHILE opcion!=-1 
+defs : [] uses : [opcion]"->"18: 81:  
+defs : [] uses : []"
+"3: 36:  cout **´´que quieres hacer´´** 
+defs : [] uses : []"->"4: 38:  cin opcion 
+defs : [opcion] uses : []"
+"4: 38:  cin opcion 
+defs : [opcion] uses : []"->"5: 40:  cout **´´numero a´´** 
+defs : [] uses : []"
+"5: 40:  cout **´´numero a´´** 
+defs : [] uses : []"->"6: 42:  cin a 
+defs : [a] uses : []"
+"6: 42:  cin a 
+defs : [a] uses : []"->"7: 44:  cout **´´numero b´´** 
+defs : [] uses : []"
+"7: 44:  cout **´´numero b´´** 
+defs : [] uses : []"->"8: 46:  cin b 
+defs : [b] uses : []"
+"8: 46:  cin b 
+defs : [b] uses : []"->"9: 55: IF opcion=0 
+defs : [] uses : [opcion]"
+"9: 55: IF opcion=0 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"9: 55: IF opcion=0 
+defs : [] uses : [opcion]"->"10: 54:  cout **multiplicar( a,b )** 
+defs : [] uses : [a, b]"
+"9: 55: IF opcion=0 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"9: 55: IF opcion=0 
+defs : [] uses : [opcion]"->"11: 57:  
+defs : [] uses : []"
+"10: 54:  cout **multiplicar( a,b )** 
+defs : [] uses : [a, b]"->"11: 57:  
+defs : [] uses : []"
+"11: 57:  
+defs : [] uses : []"->"12: 66: IF opcion=1 
+defs : [] uses : [opcion]"
+"12: 66: IF opcion=1 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"12: 66: IF opcion=1 
+defs : [] uses : [opcion]"->"13: 65:  cout **sumar( a,b )** 
+defs : [] uses : [a, b]"
+"12: 66: IF opcion=1 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"12: 66: IF opcion=1 
+defs : [] uses : [opcion]"->"14: 68:  
+defs : [] uses : []"
+"13: 65:  cout **sumar( a,b )** 
+defs : [] uses : [a, b]"->"14: 68:  
+defs : [] uses : []"
+"14: 68:  
+defs : [] uses : []"->"15: 77: IF opcion=3 
+defs : [] uses : [opcion]"
+"15: 77: IF opcion=3 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"15: 77: IF opcion=3 
+defs : [] uses : [opcion]"->"16: 76:  cout **restar( a,b )** 
+defs : [] uses : [a, b]"
+"15: 77: IF opcion=3 
+defs : [] uses : [opcion]"[color=coral][shape=rectangle]
+"15: 77: IF opcion=3 
+defs : [] uses : [opcion]"->"17: 79:  
+defs : [] uses : []"
+"16: 76:  cout **restar( a,b )** 
+defs : [] uses : [a, b]"->"17: 79:  
+defs : [] uses : []"
+"17: 79:  
+defs : [] uses : []"->"2: 80: WHILE opcion!=-1 
+defs : [] uses : [opcion]"
+"18: 81:  
+defs : [] uses : []"->"19: 83: return 0 
+defs : [] uses : []"
+"19: 83: return 0 
+defs : [] uses : []"->"20: 85: end 
+defs : [] uses : []"
+}

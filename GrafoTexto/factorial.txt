@@ -1,0 +1,24 @@
+digraph G {
+node [style=filled];
+"0: 34: start 
+defs : [] uses : []"->"1: 1: int number 
+defs : [] uses : []"
+"1: 1: int number 
+defs : [] uses : []"->"2: 2: float factorial 
+defs : [] uses : []"
+"2: 2: float factorial 
+defs : [] uses : []"->"3: 5:  cout **´´Enter an integer: \n´´** 
+defs : [] uses : []"
+"3: 5:  cout **´´Enter an integer: \n´´** 
+defs : [] uses : []"->"4: 7:  cin number 
+defs : [number] uses : []"
+"4: 7:  cin number 
+defs : [number] uses : []"->"5: 11: 1 <- factorial 
+defs : [factorial] uses : []"
+"5: 11: 1 <- factorial 
+defs : [factorial] uses : []"->"6: 13: return 1 
+defs : [] uses : []"
+"6: 13: return 1 
+defs : [] uses : []"->"7: 35: end 
+defs : [] uses : []"
+}

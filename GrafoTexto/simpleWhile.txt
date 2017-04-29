@@ -1,0 +1,53 @@
+digraph G {
+node [style=filled];
+"0: 38: start 
+defs : [] uses : []"->"1: 1: int i 
+defs : [] uses : []"
+"1: 1: int i 
+defs : [] uses : []"->"2: 6: 10 <- i 
+defs : [i] uses : []"
+"2: 6: 10 <- i 
+defs : [i] uses : []"->"3: 34: WHILE i>0&a|b 
+defs : [] uses : [a, b, i]"
+"3: 34: WHILE i>0&a|b 
+defs : [] uses : [a, b, i]"[color=coral][shape=rectangle]
+"3: 34: WHILE i>0&a|b 
+defs : [] uses : [a, b, i]"->"4: 17:  cout **´´hello´´** 
+defs : [] uses : []"
+"3: 34: WHILE i>0&a|b 
+defs : [] uses : [a, b, i]"[color=coral][shape=rectangle]
+"3: 34: WHILE i>0&a|b 
+defs : [] uses : [a, b, i]"->"9: 35:  
+defs : [] uses : []"
+"4: 17:  cout **´´hello´´** 
+defs : [] uses : []"->"5: 19:  cout **i** 
+defs : [] uses : [i]"
+"5: 19:  cout **i** 
+defs : [] uses : [i]"->"6: 25: i-1 <- i 
+defs : [i] uses : [i]"
+"6: 25: i-1 <- i 
+defs : [i] uses : [i]"->"7: 31: IF i=6 
+defs : [] uses : [i]"
+"7: 31: IF i=6 
+defs : [] uses : [i]"[color=coral][shape=rectangle]
+"7: 31: IF i=6 
+defs : [] uses : [i]"->"8: 30: break while0 
+defs : [] uses : []"
+"7: 31: IF i=6 
+defs : [] uses : [i]"[color=coral][shape=rectangle]
+"7: 31: IF i=6 
+defs : [] uses : [i]"->"12: 33:  
+defs : [] uses : []"
+"8: 30: break while0 
+defs : [] uses : []"->"9: 35:  
+defs : [] uses : []"
+"9: 35:  
+defs : [] uses : []"->"10: 37: return 0 
+defs : [] uses : []"
+"10: 37: return 0 
+defs : [] uses : []"->"11: 39: end 
+defs : [] uses : []"
+"12: 33:  
+defs : [] uses : []"->"3: 34: WHILE i>0&a|b 
+defs : [] uses : [a, b, i]"
+}

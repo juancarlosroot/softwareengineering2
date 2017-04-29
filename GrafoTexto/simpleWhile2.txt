@@ -1,0 +1,34 @@
+digraph G {
+node [style=filled];
+"0: 24: start 
+defs : [] uses : []"->"1: 1: int x 
+defs : [] uses : []"
+"1: 1: int x 
+defs : [] uses : []"->"2: 2: int args 
+defs : [] uses : []"
+"2: 2: int args 
+defs : [] uses : []"->"3: 5: printf( ´´Enter an integer: ´´ ) 
+defs : [] uses : []"
+"3: 5: printf( ´´Enter an integer: ´´ ) 
+defs : [] uses : []"->"4: 22: IF scanf( ´´%d´´,&x ) <- args=0 
+defs : [] uses : []"
+"4: 22: IF scanf( ´´%d´´,&x ) <- args=0 
+defs : [] uses : []"[color=coral][shape=rectangle]
+"4: 22: IF scanf( ´´%d´´,&x ) <- args=0 
+defs : [] uses : []"->"5: 17: printf( ´´Error: not an integer\n´´ ) 
+defs : [] uses : []"
+"4: 22: IF scanf( ´´%d´´,&x ) <- args=0 
+defs : [] uses : []"[color=coral][shape=rectangle]
+"4: 22: IF scanf( ´´%d´´,&x ) <- args=0 
+defs : [] uses : []"->"8: 21: printf( ´´Read in %d\n´´,x ) 
+defs : [] uses : [x]"
+"5: 17: printf( ´´Error: not an integer\n´´ ) 
+defs : [] uses : []"->"6: 23:  
+defs : [] uses : []"
+"6: 23:  
+defs : [] uses : []"->"7: 25: end 
+defs : [] uses : []"
+"8: 21: printf( ´´Read in %d\n´´,x ) 
+defs : [] uses : [x]"->"6: 23:  
+defs : [] uses : []"
+}

@@ -1,0 +1,75 @@
+24
+0
+17
+1
+2 4
+3 18
+4
+5
+6
+7 15
+8 9
+9
+10
+11 12
+6
+16
+17
+ 
+13
+14
+6
+19
+20
+21 22
+4
+23
+1
+
+
+
+
+
+player 
+
+
+player 
+
+
+
+
+
+
+
+
+player 
+
+
+
+
+
+
+
+
+TRUE 
+
+
+
+someone_has_won FALSE 
+total_number_of_players player 
+
+
+player 
+
+
+
+
+
+player 
+player 
+
+player1 
+TRUE 
+
+
+player2 

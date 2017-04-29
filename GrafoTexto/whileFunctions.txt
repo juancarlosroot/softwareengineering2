@@ -1,0 +1,114 @@
+digraph G {
+node [style=filled];
+"0: 64: start 
+defs : [] uses : []"->"1: 28: WHILE true 
+defs : [] uses : []"
+"1: 28: WHILE true 
+defs : [] uses : []"[color=coral][shape=rectangle]
+"1: 28: WHILE true 
+defs : [] uses : []"->"2: 11: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"
+"1: 28: WHILE true 
+defs : [] uses : []"[color=coral][shape=rectangle]
+"1: 28: WHILE true 
+defs : [] uses : []"->"4: 29:  
+defs : [] uses : []"
+"2: 11: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"[color=coral][shape=rectangle]
+"2: 11: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"->"3: 10: break while0 
+defs : [] uses : []"
+"2: 11: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"[color=coral][shape=rectangle]
+"2: 11: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"->"18: 13:  
+defs : [] uses : []"
+"3: 10: break while0 
+defs : [] uses : []"->"4: 29:  
+defs : [] uses : []"
+"4: 29:  
+defs : [] uses : []"->"5: 33: 1 <- player 
+defs : [player] uses : []"
+"5: 33: 1 <- player 
+defs : [player] uses : []"->"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"
+"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"[color=coral][shape=rectangle]
+"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"->"7: 46: IF player>total_number_of_players 
+defs : [] uses : [total_number_of_players, player]"
+"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"[color=coral][shape=rectangle]
+"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"->"15: 61:  
+defs : [] uses : []"
+"7: 46: IF player>total_number_of_players 
+defs : [] uses : [total_number_of_players, player]"[color=coral][shape=rectangle]
+"7: 46: IF player>total_number_of_players 
+defs : [] uses : [total_number_of_players, player]"->"8: 45: 1 <- player 
+defs : [player] uses : []"
+"7: 46: IF player>total_number_of_players 
+defs : [] uses : [total_number_of_players, player]"[color=coral][shape=rectangle]
+"7: 46: IF player>total_number_of_players 
+defs : [] uses : [total_number_of_players, player]"->"9: 48:  
+defs : [] uses : []"
+"8: 45: 1 <- player 
+defs : [player] uses : []"->"9: 48:  
+defs : [] uses : []"
+"9: 48:  
+defs : [] uses : []"->"10: 53: IF is_bankrupt( player ) 
+defs : [] uses : [player]"
+"10: 53: IF is_bankrupt( player ) 
+defs : [] uses : [player]"[color=coral][shape=rectangle]
+"10: 53: IF is_bankrupt( player ) 
+defs : [] uses : [player]"->"11: 52: continue while1 
+defs : [] uses : []"
+"10: 53: IF is_bankrupt( player ) 
+defs : [] uses : [player]"[color=coral][shape=rectangle]
+"10: 53: IF is_bankrupt( player ) 
+defs : [] uses : [player]"->"12: 55:  
+defs : [] uses : []"
+"11: 52: continue while1 
+defs : [] uses : []"->"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"
+"15: 61:  
+defs : [] uses : []"->"16: 63: return 0 
+defs : [] uses : []"
+"16: 63: return 0 
+defs : [] uses : []"->"17: 65: end 
+defs : [] uses : []"
+"12: 55:  
+defs : [] uses : []"->"13: 57: take_turn( player ) 
+defs : [] uses : [player]"
+"13: 57: take_turn( player ) 
+defs : [] uses : [player]"->"14: 59: player++ 
+defs : [player] uses : [player]"
+"14: 59: player++ 
+defs : [player] uses : [player]"->"6: 60: WHILE someone_has_won=FALSE 
+defs : [] uses : [someone_has_won, FALSE]"
+"18: 13:  
+defs : [] uses : []"->"19: 15: take_turn( player1 ) 
+defs : [] uses : [player1]"
+"19: 15: take_turn( player1 ) 
+defs : [] uses : [player1]"->"20: 23: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"
+"20: 23: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"[color=coral][shape=rectangle]
+"20: 23: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"->"21: 22: break while0 
+defs : [] uses : []"
+"20: 23: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"[color=coral][shape=rectangle]
+"20: 23: IF someone_has_won ( ) |someone_wants_to_quit ( ) =TRUE 
+defs : [] uses : [TRUE]"->"22: 25:  
+defs : [] uses : []"
+"21: 22: break while0 
+defs : [] uses : []"->"4: 29:  
+defs : [] uses : []"
+"22: 25:  
+defs : [] uses : []"->"23: 27: take_turn( player2 ) 
+defs : [] uses : [player2]"
+"23: 27: take_turn( player2 ) 
+defs : [] uses : [player2]"->"1: 28: WHILE true 
+defs : [] uses : []"
+}

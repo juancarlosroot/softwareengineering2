@@ -17,7 +17,6 @@ import java.util.Stack;
  * @author fmcorona
  */
 public class TruthTable {
-
     private final String p_postfix;
     private final String p_infix;
     private final TFArrays[] tf_arr;
@@ -26,55 +25,55 @@ public class TruthTable {
     private final int row;
     private final int col;
     private final String[][] table;
-
+    
     public TruthTable(String predicate) {
         this.p_infix = cleanString(predicate);
         this.p_postfix = infixToPostfix(predicate);
         clauses = new ArrayList<>();
-
+        
         obtainClauses();
-
-        tf_arr = new TFArrays[2 * clauses.size() + 1]; // cláusulas + predicado + Pxs
+        
+        tf_arr = new TFArrays[2*clauses.size() + 1]; // cláusulas + predicado + Pxs
         Px = new TFArrays[clauses.size()];
-
-        for (int i = 0; i < clauses.size(); i++) {
+        
+        for(int i = 0; i < clauses.size(); i++) {
             tf_arr[i] = new TFArrays();
             tf_arr[clauses.size() + i] = new TFArrays();
             Px[i] = new TFArrays();
         }
-
-        tf_arr[2 * clauses.size()] = new TFArrays();
-
+        
+        tf_arr[2*clauses.size()] = new TFArrays();
+        
         row = (int) pow(2, clauses.size());
-        col = 2 * clauses.size() + 1;
-
-        table = new String[row][col];
-
+        col = 2*clauses.size() + 1;
+        
+        table = new String[row][col];  
+                
         build();
     } //End TruthTable
-
+    
     /**
-     * Construye la tabla.
+     *Construye la tabla.
      */
     private void build() {
         init();
         fillColumn(clauses.size(), p_postfix);
-
-        for (int i = 0; i < clauses.size(); i++) {
+        
+        for(int i = 0; i < clauses.size(); i++) { 
             fillColumn(clauses.size() + i + 1, majorClause(clauses.get(i)));
         }
     } //End build
-
+    
     /**
-     * Inicializa los valores, de verdad, de las cláusulas.
+     *Inicializa los valores, de verdad, de las cláusulas.  
      */
     private void init() {
         boolean put_true = true;
-        int amoutTrue = row / 2, amoutFalse = row / 2;
-
-        for (int j = 0; j < clauses.size(); j++) {
-            for (int i = 0; i < row; i++) {
-                if (put_true) {
+        int amoutTrue = row/2,  amoutFalse = row/2;
+        
+        for(int j = 0; j < clauses.size(); j++) {
+            for(int i = 0; i < row; i++) {
+                if(put_true) {
                     table[i][j] = "T";
                     tf_arr[j].addInT(i + 1); //Llenar T para la cluásula en la posición j
                     amoutTrue--;
@@ -84,220 +83,208 @@ public class TruthTable {
                     amoutFalse--;
                     //amoutTrue++; //Se puede recuperar el valor de amoutTrue aquí, en lugar de en el "if"
                 }
-
-                if (amoutTrue == 0) {
+                
+                if(amoutTrue == 0) {
                     put_true = false;
                     amoutTrue = amoutFalse; //Para no perder el numero de Ts y Fs que se tienen que escribir
                 }
-
-                if (amoutFalse == 0) {
+                
+                if(amoutFalse == 0) {
                     put_true = true;
                     amoutFalse = amoutTrue;
                 }
             }
-            amoutTrue /= 2;
-            amoutFalse /= 2;
+            amoutTrue /=2;
+            amoutFalse /=2;
         }
     } //End init
-
+    
     /**
-     * Regresa el predicado en notación postfija.
-     *
-     * @param expr predicado en notación infija
-     * @return predicado en notación postfija
+     *Regresa el predicado en notación postfija.
+     * 
+     * @param expr  predicado en notación infija
+     * @return      predicado en notación postfija
      */
     private String infixToPostfix(String expr) {
-        Stack<String> InStack = new Stack<>();
-        Stack<String> OpStack = new Stack<>();
-        Stack<String> OutStack = new Stack<>();
-        String[] arrayInfix;
-
-        expr = cleanString(expr);
+        Stack<String> InStack = new Stack <>();
+        Stack<String> OpStack = new Stack <>();
+        Stack<String> OutStack = new Stack <>();
+        String[] arrayInfix;        
+        
+        expr = cleanString(expr);        
         arrayInfix = expr.split(" ");
-
+        
         for (int i = arrayInfix.length - 1; i >= 0; i--) {
             InStack.push(arrayInfix[i]);
         }
-
+        
         while (!InStack.isEmpty()) {
-            switch (hierarchy(InStack.peek())) {
+            switch (hierarchy(InStack.peek())){
                 case 1: //"("
                     OpStack.push(InStack.pop());
                     break;
-
-                case 3:
-                case 4:
-                case 5: //"-", "&", "|", "^", ">", "="
-                    while (hierarchy(OpStack.peek()) >= hierarchy(InStack.peek())) {
+                    
+                case 3: case 4: case 5: //"-", "&", "|", "^", ">", "="
+                    while(hierarchy(OpStack.peek()) >= hierarchy(InStack.peek())) {
                         OutStack.push(OpStack.pop());
                     }
                     OpStack.push(InStack.pop());
-                    break;
-
+                    break; 
+                
                 case 2: //")"
-                    while (!OpStack.peek().equals("(")) {
+                    while(!OpStack.peek().equals("(")) {
                         OutStack.push(OpStack.pop());
                     }
                     OpStack.pop();
                     InStack.pop();
                     break;
-
+                    
                 default:
-                    OutStack.push(InStack.pop());
-            }
+                    OutStack.push(InStack.pop()); 
+            } 
         }
-
+        
         return OutStack.toString().replaceAll("[\\]\\[,]", "");
     } //End infixToPostfix
-
+    
     /**
-     * Regresa el predicado con el formato adecuado para transformarlo de
-     * notación infija a notación postfija.
-     *
-     * @param s predicado en notación infija
-     * @return predicado sin más de un espacio entre cada símbolo
+     *Regresa el predicado con el formato adecuado para transformarlo de
+     *notación infija a notación postfija.
+     * 
+     * @param s     predicado en notación infija
+     * @return      predicado sin más de un espacio entre cada símbolo
      */
     private String cleanString(String s) {
         String symbols = "-&|^>=()";
         String str = "";
-
+        
         s = s.replaceAll(" ", "");
         s = "(" + s + ")";
-
+        
         //Espacios entre conectivos lógicos
         for (int i = 0; i < s.length(); i++) {
             if (symbols.contains("" + s.charAt(i))) {
                 str += " " + s.charAt(i) + " ";
-            } else {
-                str += s.charAt(i);
-            }
+            }else str += s.charAt(i);
         }
         return str.replaceAll("\\s+", " ").trim();
     } //End cleanString
-
+    
     /**
-     * Regresa la precedencia, jerarquía, de un operador lógico.
-     *
-     * @param op operador lógica
-     * @return valor jerárquico del operador o 0 en caso de no ser un operador
-     * válido
+     *Regresa la precedencia, jerarquía, del operador lógico op.
+     * 
+     * @param op    operador lógica
+     * @return      valor jerárquico del operador o 0 en caso de no ser un
+     *              operador válido
      */
-    private int hierarchy(String op) {
-        if (op.equals("-")) {
-            return 5;
-        }
-        if (op.equals(">") || op.equals("=")) {
-            return 4;
-        }
-        if (op.equals("&") || op.equals("|") || op.equals("^")) {
-            return 3;
-        }
-        if (op.equals(")")) {
-            return 2;
-        }
-        if (op.equals("(")) {
-            return 1;
-        }
+    private int hierarchy(String op) {    
+        if (op.equals("-")) return 5;
+        if (op.equals(">") || op.equals("=")) return 4;
+        if (op.equals("&") || op.equals("|") || op.equals("^")) return 3;
+        if (op.equals(")")) return 2;
+        if (op.equals("(")) return 1;
 
         return 0;
     } //End hierarchy
-
+    
     /**
-     * Obtiene las cláusulas del predicado.
+     *Obtiene las cláusulas del predicado.
      */
     private void obtainClauses() {
         clauses.addAll(Arrays.asList(p_postfix.split(" ")));
         Collections.sort(clauses);
-
-        for (int i = 0; i < clauses.size(); i++) {
-            if (!Character.isLetter(clauses.get(i).charAt(0))) {
-                clauses.remove(i);
+        
+        for(int i = 0; i < clauses.size(); i++){
+            if(!Character.isLetter(clauses.get(i).charAt(0))) {
+                clauses.remove(i);                
                 i--; //Se recorrer el índice, porque se eliminó un elemento de clauses
-            } else if (i > 0 && clauses.get(i).equals(clauses.get(i - 1))) {
+            }
+            else if(i > 0 && clauses.get(i).equals(clauses.get(i - 1))) {
                 clauses.remove(i);
                 i--; //Se recorrer el índice, porque se eliminó un elemento de clauses
             }
         }
     } //End obtainClauses
-
-    /**
-     * Regresa Pa, valor exacto bajo el cual la cláusula "a" determina el valor
-     * del predicado.
-     *
-     * @param a cláusula return Pa en notación postfija
-     */
+    
+     /**
+      *Regresa Pa, valor exacto bajo el cual la cláusula "a" determina el valor 
+      *del predicado.
+      * 
+      * @param a    cláusula
+      * return      Pa en notación postfija
+      */
     private String majorClause(String a) {
         String Pa_false = p_postfix, Pa_true = p_postfix;
-
-        Pa_false = Pa_false.replace(a.charAt(0), 'F');
-        Pa_true = Pa_true.replace(a.charAt(0), 'T');
-
+                
+        Pa_false = Pa_false.replaceAll(a, "F");
+        Pa_true = Pa_true.replaceAll(a, "T");
+        
         return Pa_true + ' ' + Pa_false + ' ' + '^';
     } //End majorClause
-
+    
     /**
-     * Construye los valores de la tabla, en la columna c, para el predicado p.
-     *
-     * @param c columna de la tabla que se va a construir
-     * @param p predicado cuyos valores se van a calcular
+     *Construye los valores de la tabla, en la columna c, para el predicado p.
+     * 
+     * @param c     columna de la tabla que se va a construir
+     * @param p     predicado cuyos valores se van a calcular
      */
-    private void fillColumn(int c, String p) {
-        Stack<String> StackE = new Stack<>();
-        Stack<String> StackP = new Stack<>();
+    private void fillColumn(int c, String p) {        
+        Stack<String> StackE = new Stack<> ();
+        Stack<String> StackP = new Stack<> ();
         String expr;
-
-        for (int k = 0; k < row; k++) {
+        
+        for(int k = 0; k < row; k++) {
             expr = p;
-
-            for (int i = 0; i < clauses.size(); i++) { //Asignar valores, de la tabla, a las cláusulas
-                expr = expr.replace(clauses.get(i).charAt(0), table[k][i].charAt(0));
+            
+            for(int i = 0; i < clauses.size(); i++) {
+                expr = expr.replaceAll(clauses.get(i), table[k][i]); 
             }
 
             String[] post = expr.split(" ");
 
-            for (int i = post.length - 1; i >= 0; i--) {
+            for(int i = post.length - 1; i >= 0; i--) {
                 StackE.push(post[i]);
             }
-
+            
             String operators = "-&|^>=";
 
             while (!StackE.isEmpty()) {
                 if (operators.contains("" + StackE.peek())) {
-                    if (StackE.peek().equals("-")) { // Si hay una negación, se evalúa
-                        if (StackP.pop().equals("T")) {
+                    if(StackE.peek().equals("-")) { // Si hay una negación, se evalúa
+                        if(StackP.pop().equals("T")) {
                             StackP.push("F");
                         } else {
                             StackP.push("T");
                         }
                         StackE.pop();
-                    } else {
+                    } else { 
                         StackP.push(evaluate(StackE.pop(), StackP.pop(), StackP.pop()) + "");
                     }
                 } else {
                     StackP.push(StackE.pop());
                 }
             }
-
+            
             table[k][c] = StackP.pop();
-
+            
             //Si c es una columna de algun Px, obtenemos la posición donde Px = T
             //y los separamos por los valores, T o F, de la cláusula x
             //c - clauses.size() - 1 es el número de columna de la cláusula x
-            if (c > clauses.size() && table[k][c].equals("T")) {
-                if (table[k][c - clauses.size() - 1].equals("T")) {
+            if(c > clauses.size() && table[k][c].equals("T")) {
+                if(table[k][c - clauses.size() - 1].equals("T")) {
                     Px[c - clauses.size() - 1].addInT(k + 1);
                 } else {
                     Px[c - clauses.size() - 1].addInF(k + 1);
                 }
                 tf_arr[c].addInT(k + 1); //Obtenemos la posición donde Px es true
-            } else if (c > clauses.size() && table[k][c].equals("F")) {
+            } else if(c > clauses.size() && table[k][c].equals("F")) {
                 tf_arr[c].addInF(k + 1); //Obtenemos la posición donde Px es false
             }
-
+            
             //Si c es la columna del predicado, P, obtenemos la posición donde
             //P = T y P = F.
-            if (c == clauses.size()) {
-                if (table[k][c].equals("T")) {
+            if(c == clauses.size()) {
+                if(table[k][c].equals("T")) {
                     tf_arr[c].addInT(k + 1);
                 } else {
                     tf_arr[c].addInF(k + 1);
@@ -305,55 +292,43 @@ public class TruthTable {
             }
         }
     } //End fillColumn
-
+    
     /**
-     * Regresa el valor obtenido de evaluar (a op b).
-     *
-     * @param op operador
-     * @param b operando derecho
-     * @param a operando izquierdo
-     * @return valor de a op b
+     *Regresa el valor obtenido de evaluar (a op b).
+     * 
+     * @param op    operador
+     * @param b     operando derecho
+     * @param a     operando izquierdo
+     * @return      valor de a op b
      */
     private String evaluate(String op, String b, String a) { // a op b
         int val_a = 0, val_b = 0;
 
-        if (a.equals("T")) {
+        if(a.equals("T")) {
             val_a = 1;
-        } else if (a.equals("F")) {
+        } else if(a.equals("F")) {
             val_a = 0;
         }
 
-        if (b.equals("T")) {
+        if(b.equals("T")) {
             val_b = 1;
-        } else if (b.equals("F")) {
+        } else if(b.equals("F")) {
             val_b = 0;
         }
 
-        if (op.equals("&") && val_a + val_b == 2) {
-            return "T"; //And
-        }
-        if (op.equals("|") && val_a + val_b >= 1) {
-            return "T"; //Or
-        }
-        if (op.equals("^") && val_a != val_b) {
-            return "T";     //Exclusive Or
-        }
-        if (op.equals(">")) {                                 //Implication
-            if (val_a == 1 && val_b == 0) {
+        if(op.equals("&") && val_a + val_b == 2) return "T"; //And
+        if(op.equals("|") && val_a + val_b >= 1) return "T"; //Or
+        if(op.equals("^") && val_a != val_b) return "T";     //Exclusive Or
+        if(op.equals(">")) {                                 //Implication
+            if(val_a == 1 && val_b == 0)
                 return "F";
-            }
 
             return "T";
         }
-        if (op.equals("=") && val_a == val_b) {
-            return "T";     //Equivalence
-        }
+        if(op.equals("=") && val_a == val_b) return "T";     //Equivalence
+
         return "F";
     } //End evaluate
-
-    /**
-     * Imprime los valores del criterio General Active Clause Coverage (GACC)
-     */
     public ArrayList<String> GACC() {
         ArrayList<String> al_tmp = new ArrayList<>();
 
@@ -506,7 +481,7 @@ public class TruthTable {
             b_true = intersection(aux_false, tf_arr[i].getT());
             b_false = intersection(aux_false, tf_arr[i].getF());
 
-            System.out.print("-P = T: ");
+            System.out.print("P = T: ");
             string_builder.append("P = T: ");
             printValuesOfRICC(i, a_true, a_false);
             string_builder.append(
@@ -514,7 +489,7 @@ public class TruthTable {
             );
 
             System.out.print("\n\t\tP = F: ");
-            string_builder.append(" -P = F: ");
+            string_builder.append(" P = F: ");
             printValuesOfRICC(i, b_true, b_false);
             string_builder.append(
                     printValuesOfRICC(i, b_true, b_false)
