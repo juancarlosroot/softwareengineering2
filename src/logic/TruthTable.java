@@ -329,6 +329,10 @@ public class TruthTable {
 
         return "F";
     } //End evaluate
+    
+    /**
+     *Imprime los valores del criterio General Active Clause Coverage (GACC)
+     */
     public ArrayList<String> GACC() {
         ArrayList<String> al_tmp = new ArrayList<>();
 
@@ -502,13 +506,13 @@ public class TruthTable {
     } //End RICC    
 
     /**
-     * Imprime los pares (m,n), o un indica que no hay pares, para el criterio
+     * Imprime los pares (m,n), o indica que no hay pares, para el criterio
      * GICC.
      *
-     * @param a_true ArrayList que contiene los posibles valores de m para los
-     * pares (m,n), para los cuales el valor del predicado "a" es verdadero
-     * @param a_false ArrayList que contiene los posibles valores de n para los
-     * pares (m,n), para los cuales el valor del predicado "a" es falso
+     * @param a_true        ArrayList que contiene los posibles valores de m para los
+                            * pares (m,n), para los cuales el valor del predicado "a" es verdadero
+     * @param a_false       ArrayList que contiene los posibles valores de n para los
+     *                      pares (m,n), para los cuales el valor del predicado "a" es falso
      */
     private String printValuesOfGICC(ArrayList<Integer> a_true, ArrayList<Integer> a_false) {
         if (a_true.isEmpty() || a_false.isEmpty()) {
@@ -532,16 +536,16 @@ public class TruthTable {
     }
 
     /**
-     * Imprime los pares (m,n), o un indica que no hay pares, para el criterio
+     * Imprime los pares (m,n), o indica que no hay pares, para el criterio
      * RICC.
      *
-     * @param col_clause número de columna, de la tabla, en la cual se encuentra
-     * la cláusula para la cual se van a imprimir los pares (m,n). Se utiliza
-     * como referencia, para comparar los valores de las otras cláusulas
-     * @param a_true ArrayList que contiene los posibles valores de m para los
-     * pares (m,n), para los cuales el valor del predicado "a" es verdadero
-     * @param a_false ArrayList que contiene los posibles valores de n para los
-     * pares (m,n), para los cuales el valor del predicado "a" es falso
+     * @param col_clause    número de columna, de la tabla, en la cual se encuentra
+     *                      la cláusula para la cual se van a imprimir los pares (m,n). Se utiliza
+     *                      como referencia, para comparar los valores de las otras cláusulas
+     * @param a_true        ArrayList que contiene los posibles valores de m para los
+     *                      pares (m,n), para los cuales el valor del predicado "a" es verdadero
+     * @param a_false       ArrayList que contiene los posibles valores de n para los
+     *                      pares (m,n), para los cuales el valor del predicado "a" es falso
      */
     private String printValuesOfRICC(int col_clause, ArrayList<Integer> a_true, ArrayList<Integer> a_false) {
         if (a_true.isEmpty() || a_false.isEmpty()) {
@@ -570,9 +574,9 @@ public class TruthTable {
     /**
      * Regresa la intersección de A y B.
      *
-     * @param A ArrayList de Integers
-     * @param B ArrayList de Integers
-     * @return ArrayList cuyos elementos pertenecen a la intersección de A y B
+     * @param A     ArrayList de Integers
+     * @param B     ArrayList de Integers
+     * @return      ArrayList cuyos elementos pertenecen a la intersección de A y B
      */
     private ArrayList<Integer> intersection(ArrayList<Integer> A, ArrayList<Integer> B) {
         ArrayList<Integer> A_cap_B = new ArrayList<>();
@@ -586,8 +590,8 @@ public class TruthTable {
     /**
      * Regresa el valor, de verdad, del predicado en el renglón r.
      *
-     * @param r renglón
-     * @return valor de verdad del predicado
+     * @param r     renglón
+     * @return      valor de verdad del predicado
      */
     private String valueOfPredicate(int r) {
         return table[r][clauses.size()];
@@ -597,11 +601,11 @@ public class TruthTable {
      * Regresa el valor booleano, obtenido, de comparar los valores de verdad de
      * las cláusulas menores que están en los renglones r1 y r2.
      *
-     * @param col_mclause columna en la cual se encuentra la cláusula mayor
-     * @param r1 renglón 1
-     * @param r2 renglón 2
-     * @return true si las cláusulas menores en los renglones r1 y r2 tienen los
-     * mismos valores de verdad
+     * @param col_mclause   columna en la cual se encuentra la cláusula mayor
+     * @param r1            renglón 1
+     * @param r2            renglón 2
+     * @return true         si las cláusulas menores en los renglones r1 y r2 tienen los
+     *                      mismos valores de verdad
      */
     private boolean compareMinorClauses(int col_mclause, int r1, int r2) {
         for (int i = 0; i < clauses.size(); i++) {
@@ -638,6 +642,7 @@ public class TruthTable {
 
         for (int i = 0; i < clauses.size(); i++) {
             System.out.print("P" + clauses.get(i) + "\t");
+            string_builder.append("P");
             string_builder.append(clauses.get(i));
             string_builder.append("\t");
         }
