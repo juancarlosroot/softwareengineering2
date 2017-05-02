@@ -450,7 +450,7 @@ public class TruthTable {
             string_builder.append(printValuesOfGICC(a_true, a_false));
 
             System.out.print("\n\t\tP = F: ");
-            string_builder.append("P = F: ");
+            string_builder.append("; P = F: ");
             System.out.print(printValuesOfGICC(b_true, b_false));
             string_builder.append(printValuesOfGICC(b_true, b_false));
 
@@ -493,7 +493,7 @@ public class TruthTable {
             );
 
             System.out.print("\n\t\tP = F: ");
-            string_builder.append(" P = F: ");
+            string_builder.append("; P = F: ");
             printValuesOfRICC(i, b_true, b_false);
             string_builder.append(
                     printValuesOfRICC(i, b_true, b_false)
