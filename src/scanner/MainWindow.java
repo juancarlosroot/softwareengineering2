@@ -310,6 +310,11 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jComboBoxBooleanExp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jComboBoxBooleanExp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxBooleanExpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -573,6 +578,12 @@ public class MainWindow extends javax.swing.JFrame {
             PopulateTable1(truthTable.GICC());
         }
     }//GEN-LAST:event_GICCActionPerformed
+
+    private void jComboBoxBooleanExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBooleanExpActionPerformed
+        // TODO add your handling code here:
+        RecreateTable1();
+        RecreateTable2();
+    }//GEN-LAST:event_jComboBoxBooleanExpActionPerformed
 
     private void PopulateComboBox(ArrayList<BooleanExpresion> m_al) {
 //        jComboBoxBooleanExp = new JComboBox<>();
