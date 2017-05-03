@@ -23,6 +23,7 @@ LinkedList<CNode> list=new LinkedList<CNode>();
 LinkedList<CNode> breakList=new LinkedList<CNode>();
 LinkedList<CNode> continueList=new LinkedList<CNode>();
 LinkedList<CNode> returnList=new LinkedList<CNode>();
+LinkedList<CNode> unions=new LinkedList<CNode>();
 LinkedList<functionIndex> fnList=new LinkedList<functionIndex>();
 /*NECESITO SABER SI ESTOY EN UN WHILE DENTRO DE OTRO*/
 Stack <String> whileNames =new Stack<String>();
@@ -99,7 +100,10 @@ start with program;
 
 
 program         ::= declList | declList mainbody
-                {:    :}
+                {:  
+
+
+                  :}
                 |errorlex {:System.out.println("errorlex");:};
                 
 /*-------------------------------------LISTA DE DECLARACIONES  ----------------------------- */
@@ -262,6 +266,7 @@ stmtList        ::= stmtList:sl   stmt:s
                     s.m_lastLeft.m_pLeftNode=union;
                     s.m_lastRight.m_pLeftNode=union;
                     sl.add(union);
+                    unions.addLast(union);
                    }
                    if(s.getType()==1){
                     CNode union=new CNode(label(),"");
@@ -269,6 +274,7 @@ stmtList        ::= stmtList:sl   stmt:s
                     s.m_lastLeft.m_pLeftNode=union;
                     s.m_pRightNode=union;
                     sl.add(union);
+                    unions.addLast(union);
                    }
                    if(s.getType()==3){
                     
@@ -285,6 +291,7 @@ stmtList        ::= stmtList:sl   stmt:s
                     union.addLabel(CNode.eLabels.ENDWHILE);
                     s.m_pRightNode=union;
                     sl.add(union);
+                    unions.addLast(union);
                      /*MANDO LOS PUNTEROS DE LOS BREAKS AL FINAL DEL WHILE, al nodo UNION*/
                          if(!breakList.isEmpty()){
                             for(int i=0;i<breakList.size();i++){
@@ -321,6 +328,7 @@ stmtList        ::= stmtList:sl   stmt:s
                     s.m_pLeftNode.m_pRightNode=union;
                     //s.m_pRightNode=union;
                     sl.add(union);
+                    unions.addLast(union);
                      /*MANDO LOS PUNTEROS DE LOS BREAKS AL FINAL DEL WHILE, al nodo UNION*/
                          if(!breakList.isEmpty()){
                             for(int i=0;i<breakList.size();i++){
@@ -406,10 +414,10 @@ stmt            ::= assignExp:ae SEMICOLON
                          RESULT.setType(3);
                          vdl.get(vdl.size()-1).setLeft(RESULT);
                 :}
-                | FOR:a {:a="while"+whileLabel; actualWhile=a; whileLabel++; whileNames.push(a);:} LPAREN exp:e1 SEMICOLON exp:e2 SEMICOLON exp:e3 RPAREN LCURLY varDeclList:vdl stmtList:sl RCURLY
+                | FOR:a {:a="for"+whileLabel; actualWhile=a; whileLabel++; whileNames.push(a);:} LPAREN exp:e1 SEMICOLON exp:e2 SEMICOLON exp:e3 RPAREN LCURLY varDeclList:vdl stmtList:sl RCURLY
                 {:
                        // RESULT=new CNode(label(),"FOR ");
-                        boolexp.add(new BooleanExpresion(e2.getClausuleName(),aright+1));  
+                          boolexp.add(new BooleanExpresion(e2.getClausuleName(),aright+1));  
                          /*UNO LA LISTA DE VARDECL Y STMTLIST*/
                          vdl.addAll(sl);
                          /*UNO TODOS LOS NODOS DEL LIS.T*/
@@ -420,7 +428,8 @@ stmt            ::= assignExp:ae SEMICOLON
                               }
                          }
                          RESULT=new CNode(label(),e1.getSingleCodeLine());
-                         CNode nodeFor=new CNode(label(),"WHILE "+e2.getSingleCodeLine());
+                         RESULT.addDefList(e1);
+                         CNode nodeFor=new CNode(label(),"FOR "+e2.getSingleCodeLine());
                          RESULT.setLeft(nodeFor);
                          nodeFor.addLabel(CNode.eLabels.FOR);
                          nodeFor.mergeUses(e2,e3);
@@ -429,6 +438,8 @@ stmt            ::= assignExp:ae SEMICOLON
                          RESULT.setType(5);
                          //RESULT=nodeFor;
                          CNode incr=new CNode(label(),e3.getSingleCodeLine());
+                         incr.addDefList(e3);
+                         incr.mergeUses(e3);
                          vdl.get(vdl.size()-1).setLeft(incr);
                          incr.setLeft(nodeFor);
                 :}                

@@ -1,0 +1,115 @@
+digraph G {
+node [style=filled];
+"0: 24: sumar() 
+defs : [] uses : []"->"1: 3:  cout **´´sumando´´** 
+defs : [] uses : []"
+"1: 3:  cout **´´sumando´´** 
+defs : [] uses : []"->"2: 20: IF a=0 
+defs : [] uses : [a]"
+"2: 20: IF a=0 
+defs : [] uses : [a]"[color=coral][shape=rectangle]
+"2: 20: IF a=0 
+defs : [] uses : [a]"->"3: 11: 1 <- a 
+defs : [a] uses : []"
+"2: 20: IF a=0 
+defs : [] uses : [a]"[color=coral][shape=rectangle]
+"2: 20: IF a=0 
+defs : [] uses : [a]"->"6: 19: sumar( a ) <- a 
+defs : [a] uses : [a]"
+"3: 11: 1 <- a 
+defs : [a] uses : []"->"4: 13: return 5 
+defs : [] uses : []"
+"4: 13: return 5 
+defs : [] uses : []"->"5: 22: end function 
+defs : [] uses : []"
+"6: 19: sumar( a ) <- a 
+defs : [a] uses : [a]"->"7: 21:  
+defs : [] uses : []"
+"7: 21:  
+defs : [] uses : []"->"5: 22: end function 
+defs : [] uses : []"
+"0: 31: restar(b,g) 
+defs : [b, g] uses : []"->"1: 28: a-- 
+defs : [a] uses : [a]"
+"1: 28: a-- 
+defs : [a] uses : [a]"->"2: 29: end function 
+defs : [] uses : []"
+"0: 41: saludar() 
+defs : [] uses : []"->"1: 35:  cout **´´holis´´** 
+defs : [] uses : []"
+"1: 35:  cout **´´holis´´** 
+defs : [] uses : []"->"2: 36: restar ( )  
+defs : [] uses : []"
+"2: 36: restar ( )  
+defs : [] uses : []"->"3: 38:  cout **´´holis2´´** 
+defs : [] uses : []"
+"3: 38:  cout **´´holis2´´** 
+defs : [] uses : []"->"4: 39: end function 
+defs : [] uses : []"
+"0: 98: start 
+defs : [] uses : []"->"1: 64: IF a=b|b<c&a<3|b>5 
+defs : [] uses : [a, b, c]"
+"1: 64: IF a=b|b<c&a<3|b>5 
+defs : [] uses : [a, b, c]"[color=coral][shape=rectangle]
+"1: 64: IF a=b|b<c&a<3|b>5 
+defs : [] uses : [a, b, c]"->"2: 60: int b 
+defs : [] uses : []"
+"1: 64: IF a=b|b<c&a<3|b>5 
+defs : [] uses : [a, b, c]"[color=coral][shape=rectangle]
+"1: 64: IF a=b|b<c&a<3|b>5 
+defs : [] uses : [a, b, c]"->"5: 66:  
+defs : [] uses : []"
+"2: 60: int b 
+defs : [] uses : []"->"3: 61: int c 
+defs : [] uses : []"
+"3: 61: int c 
+defs : [] uses : []"->"4: 63: saludar ( )  
+defs : [] uses : []"
+"4: 63: saludar ( )  
+defs : [] uses : []"->"5: 66:  
+defs : [] uses : []"
+"5: 66:  
+defs : [] uses : []"->"6: 95: WHILE a=b 
+defs : [] uses : [a, b]"
+"6: 95: WHILE a=b 
+defs : [] uses : [a, b]"[color=coral][shape=rectangle]
+"6: 95: WHILE a=b 
+defs : [] uses : [a, b]"->"7: 71: sumar ( )  
+defs : [] uses : []"
+"6: 95: WHILE a=b 
+defs : [] uses : [a, b]"[color=coral][shape=rectangle]
+"6: 95: WHILE a=b 
+defs : [] uses : [a, b]"->"13: 96:  
+defs : [] uses : []"
+"7: 71: sumar ( )  
+defs : [] uses : []"->"8: 89: IF b=5 
+defs : [] uses : [b]"
+"8: 89: IF b=5 
+defs : [] uses : [b]"[color=coral][shape=rectangle]
+"8: 89: IF b=5 
+defs : [] uses : [b]"->"9: 83: 90*d+f <- a 
+defs : [a] uses : [d, f]"
+"8: 89: IF b=5 
+defs : [] uses : [b]"[color=coral][shape=rectangle]
+"8: 89: IF b=5 
+defs : [] uses : [b]"->"11: 87:  cout **c** 
+defs : [] uses : [c]"
+"9: 83: 90*d+f <- a 
+defs : [a] uses : [d, f]"->"10: 84: continue while0 
+defs : [] uses : []"
+"10: 84: continue while0 
+defs : [] uses : []"->"6: 95: WHILE a=b 
+defs : [] uses : [a, b]"
+"13: 96:  
+defs : [] uses : []"->"14: 97: return  
+defs : [] uses : []"
+"14: 97: return  
+defs : [] uses : []"->"15: 99: end 
+defs : [] uses : []"
+"11: 87:  cout **c** 
+defs : [] uses : [c]"->"12: 88: break while0 
+defs : [] uses : []"
+"12: 88: break while0 
+defs : [] uses : []"->"13: 96:  
+defs : [] uses : []"
+}

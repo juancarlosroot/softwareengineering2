@@ -43,6 +43,7 @@ public class CNode
     public CNode m_lastRight;
     /*Used to identify in the parser the type of node, only is used for make the graph*/
     int m_nType;
+    String operators[]={"+","-","*","/","&"};
     
     int m_iMappedId;
     /**
@@ -291,7 +292,12 @@ public class CNode
 
     public void addUse( String codeLine )
     {
-	m_lstUses.add(codeLine);
+       for(int i=0;i<operators.length;i++){
+           if(codeLine.contains(operators[i])){
+               return;
+           }
+       }
+        m_lstUses.add(codeLine);
     }
 
 

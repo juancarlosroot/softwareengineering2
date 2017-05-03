@@ -120,6 +120,7 @@ public class MainWindow extends javax.swing.JFrame {
         jButtonUses = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        scrollPane = new javax.swing.JScrollPane();
         jLabelGraph = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -192,7 +193,7 @@ public class MainWindow extends javax.swing.JFrame {
         jTable3.setModel(model3);
         jScrollPane3.setViewportView(jTable3);
 
-        jLabelGraph.setText("´");
+        scrollPane.setViewportView(jLabelGraph);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,8 +222,9 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButtonUses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonEPC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,9 +247,12 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(jButtonDefs)
                             .addComponent(jButtonUses))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 173, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(scrollPane)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Graph Coverage", jPanel1);
@@ -440,12 +445,12 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 646, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -498,7 +503,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         analizar();
 //        aquí debe de ir el enlace hacía la 2da parte
-        newGraph
+       newGraph
                 = new Graph(
                         System.getProperty("user.dir")
                         + "/" + "Salidas" + "/" + fileName + "_main.txt");
@@ -507,7 +512,7 @@ public class MainWindow extends javax.swing.JFrame {
         jTextFieldInitNodes.setText(Integer.toString(newGraph.getInit()));
         jTextFieldFinalNodes.setText(Integer.toString(newGraph.getEnd()));
 
-//        newGraph.printData();
+        newGraph.printData();
         PopulateComboBox(BooleanExpressionsManager.getList());
 
 
@@ -515,7 +520,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonEPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEPCActionPerformed
         // TODO add your handling code here:
-        PopulateTable3(newGraph.getEpc(), jButtonEPC.getText());
+       PopulateTable3(newGraph.getEpc(), jButtonEPC.getText());
     }//GEN-LAST:event_jButtonEPCActionPerformed
 
     private void jButtonUsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsesActionPerformed
@@ -530,7 +535,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonPrimePathsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimePathsActionPerformed
         // TODO add your handling code here:
-        PopulateTable3(newGraph.getPrimeAux(), jButtonPrimePaths.getText());
+       PopulateTable3(newGraph.getPrimeAux(), jButtonPrimePaths.getText());
     }//GEN-LAST:event_jButtonPrimePathsActionPerformed
 
     private void CACCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CACCActionPerformed
@@ -700,6 +705,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void analizar() {
         try {
+            jComboBoxBooleanExp.removeAllItems();
             msj = "";
             // TODO add your handling code here:
             String Cadena = jTextArea2.getText();
@@ -740,9 +746,8 @@ public class MainWindow extends javax.swing.JFrame {
             generateImg(fileName, "png");
             /*Imprimo la lista de expresiones booleanas*/
 //            JOptionPane.showMessageDialog(null, exps);
-            jLabelGraph.setSize(700, 700);
             Thread.sleep(1000);
-            ImageIcon imageIcon
+           /* ImageIcon imageIcon
                     = new ImageIcon(
                             new ImageIcon(
                                     System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + "png"
@@ -753,8 +758,8 @@ public class MainWindow extends javax.swing.JFrame {
                                     600,
                                     Image.SCALE_AREA_AVERAGING
                             )
-                    );
-            jLabelGraph.setIcon(imageIcon);
+                    );*/
+            jLabelGraph.setIcon(new ImageIcon(System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + "png"));
         } catch (Exception ex) {
             Logger.getLogger(Entorno.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -969,5 +974,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextFieldFinalNodes;
     private javax.swing.JTextField jTextFieldInitNodes;
+    private javax.swing.JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
 }

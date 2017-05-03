@@ -39,7 +39,7 @@ defs : [] uses : []"
 defs : [] uses : [a]"[color=coral][shape=rectangle]
 "7: 43: IF a=0 
 defs : [] uses : [a]"->"12: 39: 0 <- i 
-defs : [] uses : []"
+defs : [i] uses : []"
 "8: 26:  cout **´´no se imprimirá nada´´** 
 defs : [] uses : []"->"9: 44:  
 defs : [] uses : []"
@@ -50,23 +50,23 @@ defs : [] uses : []"
 defs : [] uses : []"->"11: 48: end 
 defs : [] uses : []"
 "12: 39: 0 <- i 
-defs : [] uses : []"->"13: 40: WHILE i<10 
+defs : [i] uses : []"->"13: 40: FOR i<10 
 defs : [] uses : [i]"
-"13: 40: WHILE i<10 
+"13: 40: FOR i<10 
 defs : [] uses : [i]"[color=coral][shape=rectangle]
-"13: 40: WHILE i<10 
+"13: 40: FOR i<10 
 defs : [] uses : [i]"->"14: 38: imprimir( a ) 
 defs : [] uses : [a]"
-"13: 40: WHILE i<10 
+"13: 40: FOR i<10 
 defs : [] uses : [i]"[color=coral][shape=rectangle]
-"13: 40: WHILE i<10 
+"13: 40: FOR i<10 
 defs : [] uses : [i]"->"16: 42:  
 defs : [] uses : []"
 "14: 38: imprimir( a ) 
 defs : [] uses : [a]"->"15: 41: i++ 
-defs : [] uses : []"
+defs : [i] uses : [i]"
 "15: 41: i++ 
-defs : [] uses : []"->"13: 40: WHILE i<10 
+defs : [i] uses : [i]"->"13: 40: FOR i<10 
 defs : [] uses : [i]"
 "16: 42:  
 defs : [] uses : []"->"9: 44:  

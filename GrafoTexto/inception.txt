@@ -24,64 +24,64 @@ defs : [] uses : [a]"->"25: 75:
 defs : [] uses : []"
 "5: 9:  cout **´´vamos a poner 3 ciclos anidados´´** 
 defs : [] uses : []"->"6: 70: 0 <- i 
-defs : [] uses : []"
+defs : [i] uses : []"
 "6: 70: 0 <- i 
-defs : [] uses : []"->"7: 71: WHILE i<10 
+defs : [i] uses : []"->"7: 71: FOR i<10 
 defs : [] uses : [i]"
-"7: 71: WHILE i<10 
+"7: 71: FOR i<10 
 defs : [] uses : [i]"[color=coral][shape=rectangle]
-"7: 71: WHILE i<10 
+"7: 71: FOR i<10 
 defs : [] uses : [i]"->"8: 66: 0 <- j 
-defs : [] uses : []"
-"7: 71: WHILE i<10 
+defs : [j] uses : []"
+"7: 71: FOR i<10 
 defs : [] uses : [i]"[color=coral][shape=rectangle]
-"7: 71: WHILE i<10 
+"7: 71: FOR i<10 
 defs : [] uses : [i]"->"24: 73:  
 defs : [] uses : []"
 "8: 66: 0 <- j 
-defs : [] uses : []"->"9: 67: WHILE j<10 
+defs : [j] uses : []"->"9: 67: FOR j<10 
 defs : [] uses : [j]"
-"9: 67: WHILE j<10 
+"9: 67: FOR j<10 
 defs : [] uses : [j]"[color=coral][shape=rectangle]
-"9: 67: WHILE j<10 
+"9: 67: FOR j<10 
 defs : [] uses : [j]"->"10: 35: IF function( a )<res( b ) 
 defs : [] uses : [a, b]"
-"9: 67: WHILE j<10 
+"9: 67: FOR j<10 
 defs : [] uses : [j]"[color=coral][shape=rectangle]
-"9: 67: WHILE j<10 
+"9: 67: FOR j<10 
 defs : [] uses : [j]"->"22: 69:  
 defs : [] uses : []"
 "10: 35: IF function( a )<res( b ) 
 defs : [] uses : [a, b]"[color=coral][shape=rectangle]
 "10: 35: IF function( a )<res( b ) 
-defs : [] uses : [a, b]"->"11: 34: continue while2 
+defs : [] uses : [a, b]"->"11: 34: continue for2 
 defs : [] uses : []"
 "10: 35: IF function( a )<res( b ) 
 defs : [] uses : [a, b]"[color=coral][shape=rectangle]
 "10: 35: IF function( a )<res( b ) 
 defs : [] uses : [a, b]"->"12: 37:  
 defs : [] uses : []"
-"11: 34: continue while2 
-defs : [] uses : []"->"9: 67: WHILE j<10 
+"11: 34: continue for2 
+defs : [] uses : []"->"9: 67: FOR j<10 
 defs : [] uses : [j]"
 "12: 37:  
 defs : [] uses : []"->"13: 62: 0 <- k 
-defs : [] uses : []"
+defs : [k] uses : []"
 "13: 62: 0 <- k 
-defs : [] uses : []"->"14: 63: WHILE k<10 
+defs : [k] uses : []"->"14: 63: FOR k<10 
 defs : [] uses : [k]"
-"14: 63: WHILE k<10 
+"14: 63: FOR k<10 
 defs : [] uses : [k]"[color=coral][shape=rectangle]
-"14: 63: WHILE k<10 
+"14: 63: FOR k<10 
 defs : [] uses : [k]"->"15: 52: printf( i*j*k ) 
-defs : [] uses : [i*j*k, i, j, k]"
-"14: 63: WHILE k<10 
+defs : [] uses : [i, j, k]"
+"14: 63: FOR k<10 
 defs : [] uses : [k]"[color=coral][shape=rectangle]
-"14: 63: WHILE k<10 
+"14: 63: FOR k<10 
 defs : [] uses : [k]"->"20: 65:  
 defs : [] uses : []"
 "15: 52: printf( i*j*k ) 
-defs : [] uses : [i*j*k, i, j, k]"->"16: 59: IF i=0 
+defs : [] uses : [i, j, k]"->"16: 59: IF i=0 
 defs : [] uses : [i]"
 "16: 59: IF i=0 
 defs : [] uses : [i]"[color=coral][shape=rectangle]
@@ -98,21 +98,21 @@ defs : [] uses : []"->"18: 61:
 defs : [] uses : []"
 "18: 61:  
 defs : [] uses : []"->"19: 64: k++ 
-defs : [] uses : []"
+defs : [k] uses : [k]"
 "19: 64: k++ 
-defs : [] uses : []"->"14: 63: WHILE k<10 
+defs : [k] uses : [k]"->"14: 63: FOR k<10 
 defs : [] uses : [k]"
 "20: 65:  
 defs : [] uses : []"->"21: 68: j++ 
-defs : [] uses : []"
+defs : [j] uses : [j]"
 "21: 68: j++ 
-defs : [] uses : []"->"9: 67: WHILE j<10 
+defs : [j] uses : [j]"->"9: 67: FOR j<10 
 defs : [] uses : [j]"
 "22: 69:  
 defs : [] uses : []"->"23: 72: i++ 
-defs : [] uses : []"
+defs : [i] uses : [i]"
 "23: 72: i++ 
-defs : [] uses : []"->"7: 71: WHILE i<10 
+defs : [i] uses : [i]"->"7: 71: FOR i<10 
 defs : [] uses : [i]"
 "24: 73:  
 defs : [] uses : []"->"4: 74: WHILE function( a ) 
