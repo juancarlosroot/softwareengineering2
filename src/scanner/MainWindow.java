@@ -10,7 +10,6 @@ import graphreduction.BooleanExpressionsManager;
 import graphreduction.CGraph;
 import graphreduction.CGraphManager;
 import graphreduction.CNode;
-import highlight.JEditTextArea;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.BufferedReader;
@@ -70,7 +69,6 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * Creates new form Entorno
      */
-    JEditTextArea je = new JEditTextArea();
     parser p;
     /**
      * Creates new form MainWindow
@@ -688,7 +686,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTable3.setModel(model3);
     }
-
+    /**
+     * abrir archivo
+     * @return 
+     */
     private String abrirArchivo() {
         String aux = "";
         String texto;
@@ -713,7 +714,9 @@ public class MainWindow extends javax.swing.JFrame {
         }
         return texto;
     }
-
+    /**
+     * hace toda la accion de analisis
+     */
     private void analizar() {
         try {
             jComboBoxBooleanExp.removeAllItems();
@@ -722,10 +725,10 @@ public class MainWindow extends javax.swing.JFrame {
             String Cadena = jTextArea2.getText();
             /*ESTA CÓDIGO ME SIRVE PARA JALAR EL TEXTO Y QUE LO ANALIZE EL PARSER*/
             p = new parser(new Yylex(new BufferedReader(new StringReader(Cadena))));
-            /*LLAMO AL ANALIZADOR SINTÁCTICO*/
+            /*LLAMO AL ANALIZADOR SINTACTICO*/
             p.parse();
             /*OOLEXP ES UNA LISTA CON LAS EXPRESIONES BOOLEANAS PERO DE TODO EL PROGRAMA*/
- /*se puede usar para la evaluación de predicados*/
+            /*se puede usar para la evaluación de predicados*/
             String exps = p.action_obj.boolexp.toString();
             BooleanExpressionsManager.setList(p.action_obj.boolexp);
             msj = msj + "digraph G {\nnode [style=filled];\n";
@@ -755,27 +758,18 @@ public class MainWindow extends javax.swing.JFrame {
             msj = msj + "}";
             write("/GrafoTexto/" + fileName, msj);
             generateImg(fileName, "png");
-            /*Imprimo la lista de expresiones booleanas*/
-//            JOptionPane.showMessageDialog(null, exps);
+
             Thread.sleep(1000);
-           /* ImageIcon imageIcon
-                    = new ImageIcon(
-                            new ImageIcon(
-                                    System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + "png"
-                            )
-                            .getImage()
-                            .getScaledInstance(
-                                    600,
-                                    600,
-                                    Image.SCALE_AREA_AVERAGING
-                            )
-                    );*/
+
             jLabelGraph.setIcon(new ImageIcon(System.getProperty("user.dir") + "/GrafoImg/" + fileName + "." + "png"));
         } catch (Exception ex) {
-            Logger.getLogger(Entorno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * busqueda por profundidad sobre el nodo n y generacion del string para graphviz
+     * @param n 
+     */
     public void explore(CNode n) {
         String m = "";
         String defs = "";
@@ -873,7 +867,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }
-
+    
     public String getNodeString(CNode n1, CNode n2, boolean color) {
         String cad = "";
         if (color) {
@@ -891,7 +885,11 @@ public class MainWindow extends javax.swing.JFrame {
         return cad;
 
     }
-
+    /**
+     * genera el archivo de imagen de graphviz
+     * @param fileName
+     * @param format 
+     */
     public void generateImg(String fileName, String format) {
         try {
             String cmd = ConfigProject.cmdGraphviz + " -T" + format + " " + System.getProperty("user.dir") + "/GrafoTexto/" + fileName + ".txt "
