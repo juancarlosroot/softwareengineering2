@@ -29,8 +29,7 @@ Se calcula además la cobertura lógica a través de las expresiones booleanas q
 Para correr el proyecto se necesita lo siguiente
 
 
-Instalar graphviz
---------------------
+## Instalar graphviz
 
 Es necesario instalar graphviz para la generación del grafo de ejecución del programa, la versión para windows se puede encontrar en el siguiente enlace, se siguen los pasos de instalación
 
@@ -50,6 +49,14 @@ La cual contiene la siguiente variable:
 La cual es la ruta donde se encuentra el archivo dot.exe el cual se encarga de generar el grafo a partir del texto
 
 En el caso que se use otro sistema operativo se deberá de cambiar la ruta
+
+## NetBeans IDE
+
+El proyecto fué desarrollado en esta plataforma
+
+## JDK 8
+
+El proyecto fué desarrollado con la versión 8 de Java Development Kit
 
 # Directorios del proyecto
 
