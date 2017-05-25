@@ -17,11 +17,11 @@ Generación del grafo de ejecución
 --------------------
 
 Para la generación del grafo de ejecución se realizó un análisis sintáctico en el código del programa en C, utilizando las herramientas
-+jFlex
-+JavaCup
++ jFlex
++ JavaCup
 
 En JavaCup al analizar las reglas gramaticales se generan a la vez los nodos que servirán para representar el grafo de ejecución, el archivo que contiene la gramática es el siguiente:
 
-+Parser6.cup
++ Parser6.cup
 
 En el caso de que falten ciertas reglas gramaticales, esperamos sus comentarios y tareas a realizar en ISSUES
