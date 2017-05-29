@@ -6,28 +6,33 @@ Este software tiene el objetivo de analizar el grafo de ejecución de un program
 
 Tiene las siguientes funciones principales
 
-### generación del grafo de ejecución
+### Generación del grafo de ejecución
 
 El software analiza un programa en C, y genera el grafo de ejecución del programa analizado
 
-### generar cobertura de caminos primos
+### Generar cobertura de caminos primos
 
 El software genera los caminos primos del grafo de ejecución
 
-### cobertura de aristas
+### Cobertura de aristas
 
 Se calcula la cobertura de pares de aristas del grafo de ejecución
 
-### cobertura lógica
+### Cobertura lógica
 
 Se calcula además la cobertura lógica a través de las expresiones booleanas que se obtienen en el programa analizado
-
-
 
 --------------------------
 
 Para correr el proyecto se necesita lo siguiente
 
+## JDK 8
+
+El proyecto fué desarrollado con la versión 8 de Java Development Kit
+
+## NetBeans IDE
+
+El proyecto fué desarrollado en esta plataforma
 
 ## Instalar graphviz
 
@@ -37,7 +42,7 @@ http://www.graphviz.org/pub/graphviz/stable/windows/graphviz-2.38.msi
 
 Es necesario checar que el programa se instala en Program Files(x86)
 
-### revisar la ruta de graphviz en las clases del proyecto
+### Revisar la ruta de graphviz en las clases del proyecto
 
 La clase de configuración que contiene la ruta de graphviz es:
 + ConfigProject.java
@@ -49,14 +54,6 @@ La cual contiene la siguiente variable:
 La cual es la ruta donde se encuentra el archivo dot.exe el cual se encarga de generar el grafo a partir del texto
 
 En el caso que se use otro sistema operativo se deberá de cambiar la ruta
-
-## NetBeans IDE
-
-El proyecto fué desarrollado en esta plataforma
-
-## JDK 8
-
-El proyecto fué desarrollado con la versión 8 de Java Development Kit
 
 # Directorios del proyecto
 
